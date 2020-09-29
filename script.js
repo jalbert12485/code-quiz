@@ -3,28 +3,32 @@ var question0={
     answer1: "Q0 Answer 1",
     answer2: "Q0 Answer 2",
     answer3: "Q0 Answer 3",
-    answer4: "Q0 Answer 4"
+    answer4: "Q0 Answer 4",
+    correctAnswer: 1
 }
 var question1={
     question: "Question 1",
     answer1: "Q1 Answer 1",
     answer2: "Q1 Answer 2",
     answer3: "Q1 Answer 3",
-    answer4: "Q1 Answer 4"
+    answer4: "Q1 Answer 4",
+    correctAnswer: 2
 }
 var question2={
     question: "Question 2",
     answer1: "Q2 Answer 1",
     answer2: "Q2 Answer 2",
     answer3: "Q2 Answer 3",
-    answer4: "Q2 Answer 4"
+    answer4: "Q2 Answer 4",
+    correctAnswer: 1
 }
 var question3={
     question: "Question 3",
     answer1: "Q3 Answer 1",
     answer2: "Q3 Answer 2",
     answer3: "Q3 Answer 3",
-    answer4: "Q3 Answer 4"
+    answer4: "Q3 Answer 4",
+    correctAnswer: 4
 }
 
 
@@ -45,6 +49,9 @@ function changeQuestion() {
     if(currentQuestion===0){
         timeRemaining();
     }
+    if(0 < currentQuestion && currentQuestion<= questions.length){
+        checkAnswer();
+    }
     if(currentQuestion< questions.length){
     questionBox.textContent=questions[currentQuestion].question;
     answerBox1.textContent=questions[currentQuestion].answer1;
@@ -53,6 +60,7 @@ function changeQuestion() {
     answerBox4.textContent=questions[currentQuestion].answer4;
     }
     currentQuestion++;
+
 
 }
 
@@ -71,4 +79,32 @@ function timeRemaining(){
     
 }
 
+var answerCheck1=document.querySelector("#answer1");
+var answerCheck2=document.querySelector("#answer2");
+var answerCheck3=document.querySelector("#answer3");
+var answerCheck4=document.querySelector("#answer4");
 
+var userAnswer=1;
+
+function changeUserAnswer(j){
+    userAnswer=j;
+}
+
+answerCheck1.addEventListener("click",function (){
+    changeUserAnswer(1);
+});
+answerCheck2.addEventListener("click",function (){
+    changeUserAnswer(2);
+});
+answerCheck3.addEventListener("click",function (){
+    changeUserAnswer(3);
+});
+answerCheck4.addEventListener("click",function (){
+    changeUserAnswer(4);
+});
+
+function checkAnswer() {
+    if(userAnswer != questions[currentQuestion-1].correctAnswer){
+        timeLeft=timeLeft -5;
+    }
+}
