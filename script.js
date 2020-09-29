@@ -37,7 +37,7 @@ var answerBox3=document.querySelector("#answer3Label");
 var answerBox4=document.querySelector("#answer4Label");
 var submitBtn=document.querySelector("#submit-btn");
 var currentQuestion=0;
-var timeLeft=5;
+var timeLeft=60;
 var timeBox=document.querySelector("#time");
 
 
