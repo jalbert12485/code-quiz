@@ -1,0 +1,14 @@
+legend{
+    font-size: xx-large !important;
+    font-weight: bold;
+    color: white;
+    /* background-color: gray; */
+}
+
+fieldset{
+    margin: 100px 5% 0 5%;
+}
+
+#time{
+    text-align: right;
+}
