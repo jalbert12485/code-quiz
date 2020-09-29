@@ -31,6 +31,9 @@ var question3={
     correctAnswer: 4
 }
 
+var highScore = localStorage.getItem("highScore");
+var highScoreBox=document.querySelector("#viewHighScore");
+highScoreBox.textContent="High Score: " + highScore;
 
 var questions=[question0, question1, question2, question3];
 
@@ -73,6 +76,7 @@ function timeRemaining(){
         timeBox.textContent="Time left: "+ timeLeft;
         if(timeLeft==0 || (currentQuestion > questions.length)){
             clearInterval(timerInterval);
+            checkHighScore();
         }
     },1000)
 
@@ -105,6 +109,16 @@ answerCheck4.addEventListener("click",function (){
 
 function checkAnswer() {
     if(userAnswer != questions[currentQuestion-1].correctAnswer){
-        timeLeft=timeLeft -5;
+        timeLeft=timeLeft -10;
     }
+}
+
+
+
+function checkHighScore(){
+    if(highScore===null || highScore < timeLeft){
+        localStorage.setItem("highScore", timeLeft);
+        highScoreBox.textContent="High Score: " + timeLeft;
+    }
+
 }
