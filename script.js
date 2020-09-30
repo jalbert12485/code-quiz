@@ -127,7 +127,7 @@ function changeQuestion() {
     }
     currentQuestion++;
     submitBtn.disabled=true;
-    if(currentQuestion < questions.length+1){
+    if((currentQuestion < questions.length+1) && (timeLeft>0)){
     setTimeout(function(){
         submitBtn.disabled=false;
     },1000);}
@@ -142,13 +142,15 @@ submitBtn.addEventListener("click",changeQuestion);
 function timeRemaining(){
     var timerInterval=setInterval(function(){
         timeLeft--;
-        timeBox.textContent="Time left: "+ timeLeft;
-        if(timeLeft==0 || (currentQuestion > questions.length)){
+        if(timeLeft<=0 || (currentQuestion > questions.length)){
+            timeLeft=0;
             clearInterval(timerInterval);
             checkHighScore();
             submitBtn.disabled=true;
         }
-    },1000)
+        timeBox.textContent="Time left: "+ timeLeft;
+    }
+    ,1000)
 
     
 }
@@ -169,9 +171,7 @@ fieldSet.addEventListener("click", function(event) {
     if (element.matches("input")){
         userAnswer=Number(element.getAttribute("data-answer"));
     }
-    // if (element.matches("button"){
-    //     changeQuestion();
-    // })
+
 });
 
 
@@ -182,6 +182,9 @@ fieldSet.addEventListener("click", function(event) {
 function checkAnswer() {
     if(userAnswer != questions[currentQuestion-1].correctAnswer){
         timeLeft=timeLeft -10;
+        // if(timeLeft <= 0){
+        //     timeLeft=0;
+        // }
     }
 }
 
