@@ -155,10 +155,12 @@ function timeRemaining(){
         timeLeft--;
         //If time is out or we have answered all the questions, we set time to 0, check if we got a highscore and disable the submit button.
         if(timeLeft<=0 || (currentQuestion > questions.length)){
-            timeLeft=0;
             clearInterval(timerInterval);
             checkHighScore();
             submitBtn.disabled=true;
+        }
+        if(timeLeft < 0){
+            timeLeft=0;
         }
         // Updated the timer box to show the current time left.
         timeBox.textContent="Time left: "+ timeLeft;
