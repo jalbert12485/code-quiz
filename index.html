@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <!-- our css -->
     <link rel="stylesheet" href="style.css">
     <title>JavaScript Quiz</title>
 </head>
 <body>
-
+    <!-- form box with radios adapted from bootstrap -->
     <form class="row" id="formBox" >
-
+        <!-- Fieldset contains the items that are connected to the quiz. -->
         <fieldset class="form-group col-md-8 col-xs-10  mr-auto ml-auto">
             <div class="row">
+              <!-- This will display the highscore of the user as saved in their local memory. -->
                 <h2 class="col-6" id="viewHighScore">High Score: 0
                 </h2>
+                <!-- This will display the time left. -->
                 <h2 class="col-6" id="time">Time: 60</h2>
             </div>
             <div class="row">
+              <!-- The legend will show the current question that needs to be answered. -->
               <legend class="col-form-label col-sm-12 border border-dark bg-secondary" id="question">JavaScript Quiz</legend>
-        
+              <!-- The answer will be in multiple choice format with 4 options where you can choose 1. -->
               <div class="col-12" id="answer-cont">
                 <div class="form-check border border-dark">
                   <input class="form-check-input" type="radio" name="gridRadios" id="answer1" data-answer="1" value="option1" checked>
@@ -47,20 +52,20 @@
                   </div>
               </div>
             </div>
-
+            <!-- This button will allow you to begin the quiz and sumbit answers during the quiz. -->
             <div class="row">
                 <button type="button" class="btn btn-secondary btn-lg col-md-4 col-s-6 ml-auto" id="submit-btn">Begin Quiz</button>
             </div>
           </fieldset>
 
       </form>
-      
+      <!-- This reloads the page (as the refresh button would) which serves to restart the quiz from the beginning. -->
       <div class="row">
       <button type="button" class="btn btn-secondary btn-lg col-md-4 col-s-6 ml-auto mr-auto" onclick="window.location.reload();">Restart Quiz</button>
       </div>
 
 
-
+      <!-- Attaching our script then the script connected to bootstrap. -->
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

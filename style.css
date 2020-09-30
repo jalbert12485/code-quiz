@@ -1,18 +1,21 @@
+/* formats the question box */
 legend{
     font-size: xx-large !important;
     font-weight: bold;
     color: white;
-    /* background-color: gray; */
 }
 
+/* Provides margins for the quiz contents. */
 fieldset{
     margin: 100px 5% 0 5%;
 }
 
+/* places the time left counter on the right. */
 #time{
     text-align: right;
 }
 
+/* Hides the answer boxes until the quiz starts. */
 #answer-cont{
     visibility: hidden;
 }

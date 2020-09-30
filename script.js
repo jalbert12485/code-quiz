@@ -1,4 +1,5 @@
 //Questions are modified from W3School's JavaScript quiz at https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
+// Questions are saved as objects with connected answers, then all will be inserted in an array questions.
 
 var question0={
     question: "In which HTML tag does the javascript go?",
@@ -80,20 +81,22 @@ var question9={
      "var myArray={ entry1: 1, entry2: 2, entry3: 3 }"],
     correctAnswer: 2
 }
+var questions=[question0, question1, question2, question3, question4, question5, question6, question7, question8, question9];
 
-
+//The retrieves the high score (time left at end of quiz) the user has acheived from local storage and saves to highScore variable.
 var highScore = localStorage.getItem("highScore");
 
+//If no highscore has yet been saved, we create it and set the highscore at 0.
 if(highScore===null){
         localStorage.setItem("highScore", 0);
         highScore=0;
 
     }
 
+// assigning variables that will be used to connect to html.
 var highScoreBox=document.querySelector("#viewHighScore");
+// Updates high score box on initial load.
 highScoreBox.textContent="High Score: " + highScore;
-
-var questions=[question0, question1, question2, question3, question4, question5, question6, question7, question8, question9];
 
 var questionBox=document.querySelector("#question");
 var answerBox1=document.querySelector("#answer1Label");
@@ -109,23 +112,29 @@ var fieldSet = document.querySelector("fieldset");
 var answerCont=document.querySelector("#answer-cont");
 
 
+// This will change the content of the question box as well as the answer boxes to correspond the next question in the array questions.  It also begins the quiz by changing begin quiz text to submit question on button.
 function changeQuestion() {
+    //After Begin quiz, make elements visible and change text on button.
     if(currentQuestion===0){
         timeRemaining();
         submitBtn.textContent="Submit Answer";
         answerCont.setAttribute("style", "visibility: visible");
 
     }
+    // While there are still questions left, we went to check the submitted answer against the correct answer.
     if(0 < currentQuestion && currentQuestion<= questions.length){
         checkAnswer();
     }
+    // Here we change the question and answer box text.
     if(currentQuestion< questions.length){
     questionBox.textContent=questions[currentQuestion].question;
         for(var i=0; i< 4; i++){
     answerBox[i].textContent=questions[currentQuestion].answer[i];
             }
     }
+    // change to next question
     currentQuestion++;
+    // disable submit button, then enables it after 1 sec to avoid accidently clicking through questions.  Note delay could be shorter if just avoiding double click, but also wanted to ensure the user reads the question for atleast 1 second.
     submitBtn.disabled=true;
     if((currentQuestion < questions.length+1) && (timeLeft>0)){
     setTimeout(function(){
@@ -136,18 +145,22 @@ function changeQuestion() {
 
 }
 
+// We listen for the submit button to be clicked.  When it is, the changeQuestion function above will be called.
 submitBtn.addEventListener("click",changeQuestion);
 
-
+//Sets timer that decrement timeLeft.
 function timeRemaining(){
     var timerInterval=setInterval(function(){
+        // Decrements time left
         timeLeft--;
+        //If time is out or we have answered all the questions, we set time to 0, check if we got a highscore and disable the submit button.
         if(timeLeft<=0 || (currentQuestion > questions.length)){
             timeLeft=0;
             clearInterval(timerInterval);
             checkHighScore();
             submitBtn.disabled=true;
         }
+        // Updated the timer box to show the current time left.
         timeBox.textContent="Time left: "+ timeLeft;
     }
     ,1000)
@@ -155,7 +168,7 @@ function timeRemaining(){
     
 }
 
-
+//userAnswer corresponds to the currently chosen answer box.
 var userAnswer=1;
 
 function changeUserAnswer(j){
@@ -165,7 +178,7 @@ function changeUserAnswer(j){
 
 
 
-
+//When the user clicks on an input in the form box, the userAnswer is changed to the number corresponding to that box.
 fieldSet.addEventListener("click", function(event) {
     var element = event.target;
     if (element.matches("input")){
@@ -178,18 +191,15 @@ fieldSet.addEventListener("click", function(event) {
 
 
 
-
+// When an answer is submit we use this to see if the currently checked box corresponds to the correct answer for that quesion.  If not, we deduct 10 seconds from the time left.
 function checkAnswer() {
     if(userAnswer != questions[currentQuestion-1].correctAnswer){
         timeLeft=timeLeft -10;
-        // if(timeLeft <= 0){
-        //     timeLeft=0;
-        // }
     }
 }
 
 
-
+//At end of quiz, we check the timeLeft against the current high score.  If the time left is greater we have a new highscore so we set this in the local storage and in the highscore box.
 function checkHighScore(){
     if(highScore < timeLeft){
         localStorage.setItem("highScore", timeLeft);
