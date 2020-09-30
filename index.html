@@ -13,47 +13,51 @@
 
         <fieldset class="form-group col-md-8 col-xs-10  mr-auto ml-auto">
             <div class="row">
-                <p class="col-6" id="viewHighScore">High Score: 0
-                </p>
-                <p class="col-6" id="time">Time: 60</p>
+                <h2 class="col-6" id="viewHighScore">High Score: 0
+                </h2>
+                <h2 class="col-6" id="time">Time: 60</h2>
             </div>
             <div class="row">
-              <legend class="col-form-label col-sm-12 border border-dark bg-secondary" id="question">Question</legend>
+              <legend class="col-form-label col-sm-12 border border-dark bg-secondary" id="question">JavaScript Quiz</legend>
         
-              <div class="col-12">
+              <div class="col-12" id="answer-cont">
                 <div class="form-check border border-dark">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="answer1" value="option1" checked>
+                  <input class="form-check-input" type="radio" name="gridRadios" id="answer1" data-answer="1" value="option1" checked>
                   <label class="form-check-label" for="answer1" id="answer1Label">
-                    Answer 1
+                   
                   </label>
                 </div>
                 <div class="form-check border border-dark">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="answer2" value="option2">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="answer2" data-answer="2" value="option2">
                   <label class="form-check-label" for="answer2" id="answer2Label">
-                    Answer 2
+                    
                   </label>
                 </div>
                 <div class="form-check border border-dark">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="answer3" value="option2">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="answer3" data-answer="3" value="option2">
                     <label class="form-check-label" for="answer3" id="answer3Label">
-                      Answer 3
+                      
                     </label>
                   </div>
                   <div class="form-check border border-dark">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="answer4" value="option2">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="answer4" data-answer="4" value="option2">
                     <label class="form-check-label" for="answer4" id="answer4Label">
-                      Answer 4
+                    
                     </label>
                   </div>
               </div>
             </div>
 
             <div class="row">
-                <button type="button" class="btn btn-secondary btn-lg col-md-4 col-s-6 ml-auto" id="submit-btn">Submit Answer</button>
+                <button type="button" class="btn btn-secondary btn-lg col-md-4 col-s-6 ml-auto" id="submit-btn">Begin Quiz</button>
             </div>
           </fieldset>
 
       </form>
+      
+      <div class="row">
+      <button type="button" class="btn btn-secondary btn-lg col-md-4 col-s-6 ml-auto mr-auto" onclick="window.location.reload();">Restart Quiz</button>
+      </div>
 
 
 

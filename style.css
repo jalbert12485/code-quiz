@@ -12,3 +12,7 @@ fieldset{
 #time{
     text-align: right;
 }
+
+#answer-cont{
+    visibility: hidden;
+}
