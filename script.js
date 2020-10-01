@@ -83,21 +83,9 @@ var question9={
 }
 var questions=[question0, question1, question2, question3, question4, question5, question6, question7, question8, question9];
 
-//The retrieves the high score (time left at end of quiz) the user has acheived from local storage and saves to highScore variable.
-var highScore = localStorage.getItem("highScore");
 
-//If no highscore has yet been saved, we create it and set the highscore at 0.
-if(highScore===null){
-        localStorage.setItem("highScore", 0);
-        highScore=0;
-
-    }
 
 // assigning variables that will be used to connect to html.
-var highScoreBox=document.querySelector("#viewHighScore");
-// Updates high score box on initial load.
-highScoreBox.textContent="High Score: " + highScore;
-
 var questionBox=document.querySelector("#question");
 var answerBox1=document.querySelector("#answer1Label");
 var answerBox2=document.querySelector("#answer2Label");
@@ -110,6 +98,7 @@ var timeLeft=60;
 var timeBox=document.querySelector("#time");
 var fieldSet = document.querySelector("fieldset");
 var answerCont=document.querySelector("#answer-cont");
+var saveScoreBtn=document.querySelector("#score-btn");
 
 
 // This will change the content of the question box as well as the answer boxes to correspond the next question in the array questions.  It also begins the quiz by changing begin quiz text to submit question on button.
@@ -156,8 +145,8 @@ function timeRemaining(){
         //If time is out or we have answered all the questions, we set time to 0, check if we got a highscore and disable the submit button.
         if(timeLeft<=0 || (currentQuestion > questions.length)){
             clearInterval(timerInterval);
-            checkHighScore();
             submitBtn.disabled=true;
+            saveScoreBtn.setAttribute("style","display: block");
         }
         if(timeLeft < 0){
             timeLeft=0;
@@ -201,12 +190,5 @@ function checkAnswer() {
 }
 
 
-//At end of quiz, we check the timeLeft against the current high score.  If the time left is greater we have a new highscore so we set this in the local storage and in the highscore box.
-function checkHighScore(){
-    if(highScore < timeLeft){
-        localStorage.setItem("highScore", timeLeft);
-        highScoreBox.textContent="High Score: " + timeLeft;
-    }
 
-}
 

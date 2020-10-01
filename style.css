@@ -19,3 +19,7 @@ fieldset{
 #answer-cont{
     visibility: hidden;
 }
+
+#score-btn, #high-score-list{
+    display: none;
+}
