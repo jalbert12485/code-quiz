@@ -9,7 +9,7 @@ v) When the time runs out, or all questions are answered, the quiz will end.
 vi) The score for the quiz will be the amount of time left on completion.
 vii) This score will then be compared to the highscore which is saved locally.
 
-Note that the questions are modified from those on the JavaScript quiz from W3Shool [W3School](https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS).
+Note that the questions are modified from those on the JavaScript quiz from [W3School](https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS).
 
 The deployed page is at [webpage](https://jalbert12485.github.io/homework-4/) and a screenshot is below.
 ![Screenshot](Screenshot.png)
